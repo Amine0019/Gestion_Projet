@@ -1,11 +1,10 @@
 package tn.esprit.gestion_projet.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.Set;
 
 @Entity
 @Getter
@@ -20,4 +19,7 @@ public class Entreprise {
     long idEntreprise;
     String nomEntreprise;
     String adresse;
+
+    @OneToMany(mappedBy = "entreprise")
+    Set<Equipe> equipes;
 }

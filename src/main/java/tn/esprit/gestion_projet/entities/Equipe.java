@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -18,4 +20,12 @@ public class Equipe {
     String nom;
     @Enumerated(EnumType.STRING)
     Domain domain ;
+
+
+    @ManyToMany
+    Set<Projet> projets;
+
+    @ManyToOne
+    Entreprise entreprise;
+
 }
