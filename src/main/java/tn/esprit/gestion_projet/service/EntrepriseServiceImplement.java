@@ -29,4 +29,6 @@ public class EntrepriseServiceImplement implements IEntrepriseService{
     public Entreprise findEntrepriseById(long id) {
         return entrepriseRepository.findById(id).get();
     }
+
+
 }
