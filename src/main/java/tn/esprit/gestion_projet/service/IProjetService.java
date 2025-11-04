@@ -9,4 +9,5 @@ public interface IProjetService {
     void deleteProjetById(long id);
     List<Projet> findAllProjets();
     Projet findProjet(long id);
+    Projet assignProjetDetailToProjet(long idProjet,long idProjetD);
 }

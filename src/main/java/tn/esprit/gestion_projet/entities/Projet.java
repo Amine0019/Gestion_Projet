@@ -19,7 +19,7 @@ public class Projet {
     long idProjet;
     String Sujet;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     ProjetDetail projetD;
 
     @ManyToMany(mappedBy = "projets")

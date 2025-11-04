@@ -1,5 +1,6 @@
 package tn.esprit.gestion_projet.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -23,6 +24,8 @@ public class ProjetDetail {
     Date DateDebut;
 
     @OneToOne(mappedBy = "projetD")
+    @ToString.Exclude
+            @JsonIgnore
     Projet projet;
 
 }

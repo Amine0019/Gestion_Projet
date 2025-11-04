@@ -3,6 +3,8 @@ package tn.esprit.gestion_projet.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.gestion_projet.entities.Projet;
+import tn.esprit.gestion_projet.entities.ProjetDetail;
+import tn.esprit.gestion_projet.repositories.ProjetDetailRepository;
 import tn.esprit.gestion_projet.repositories.ProjetRepository;
 
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ProjetServiceImplement implements IProjetService{
     final ProjetRepository projetRepository;
+    final ProjetDetailRepository projetDetailRepository;
     @Override
     public Projet addOrUpdate(Projet projet) {
         return projetRepository.save(projet);
@@ -28,5 +31,13 @@ public class ProjetServiceImplement implements IProjetService{
     @Override
     public Projet findProjet(long id) {
         return projetRepository.findById(id).get();
+    }
+
+    @Override
+    public Projet assignProjetDetailToProjet(long idProjet, long idProjetD) {
+        Projet projet = projetRepository.findById(idProjet).get();
+        ProjetDetail projetD = projetDetailRepository.findById(idProjetD).get();
+        projet.setProjetD(projetD);
+        return projetRepository.save(projet);
     }
 }

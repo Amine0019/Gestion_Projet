@@ -36,4 +36,10 @@ public class ProjetController {
     Projet findProjetById(@RequestParam long idProjet) {
         return projetService.findProjet(idProjet);
     }
+
+    @PutMapping("/assignProjetDetailToProjet/{idProjet}/{idProjetD}")
+    public Projet assignProjetDetailToProjet(@PathVariable long idProjet, @PathVariable long idProjetD) {
+        return projetService.assignProjetDetailToProjet(idProjet, idProjetD);
+    }
+
 }
