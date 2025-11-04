@@ -51,4 +51,11 @@ public class ProjetServiceImplement implements IProjetService{
         equipe.getProjets().add(projet);
         return equipeRepository.save(equipe);
     }
+
+    @Override
+    public Projet addProjetAndAssignProjetDetail(Projet p, long idProjetD) {
+        ProjetDetail projetD = projetDetailRepository.findById(idProjetD).get();
+        p.setProjetD(projetD);
+        return projetRepository.save(p);
+    }
 }

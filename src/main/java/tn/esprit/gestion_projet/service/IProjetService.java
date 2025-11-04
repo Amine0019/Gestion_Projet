@@ -12,4 +12,5 @@ public interface IProjetService {
     Projet findProjet(long id);
     Projet assignProjetDetailToProjet(long idProjet,long idProjetD);
     Equipe assignProjetToEquipe(long idEquipe,long idProjet);
+    Projet addProjetAndAssignProjetDetail(Projet p , long idProjetD);
 }

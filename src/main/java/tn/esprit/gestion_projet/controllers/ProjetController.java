@@ -48,4 +48,10 @@ public class ProjetController {
         return projetService.assignProjetToEquipe(idEquipe, idProjet);
     }
 
+    @PostMapping("/addProjetAndAssignProjetDetail/{idProjetD}")
+    public Projet addProjetAndAssignProjetDetail(@RequestBody Projet p, @PathVariable long idProjetD) {
+        return projetService.addProjetAndAssignProjetDetail(p, idProjetD);
+    }
+
+
 }
