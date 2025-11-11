@@ -1,6 +1,8 @@
 package tn.esprit.gestion_projet.service;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.gestion_projet.entities.Equipe;
 import tn.esprit.gestion_projet.entities.Projet;
@@ -10,8 +12,11 @@ import tn.esprit.gestion_projet.repositories.ProjetDetailRepository;
 import tn.esprit.gestion_projet.repositories.ProjetRepository;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 @Service
 @AllArgsConstructor
+@Slf4j
 public class ProjetServiceImplement implements IProjetService{
     final ProjetRepository projetRepository;
     final ProjetDetailRepository projetDetailRepository;
@@ -27,8 +32,15 @@ public class ProjetServiceImplement implements IProjetService{
     }
 
     @Override
+    @Scheduled(fixedDelay = 10,timeUnit = TimeUnit.SECONDS,initialDelay = 5)
+    //@Scheduled(fixedRate = 10000)
+    //@Scheduled(cron = "10 * * * * *")
     public List<Projet> findAllProjets() {
-        return projetRepository.findAll();
+        List<Projet> projets = projetRepository.findAll();
+        for (Projet projet : projets) {
+            log.info("le projet :"+ projet);
+        }
+        return projets;
     }
 
     @Override
